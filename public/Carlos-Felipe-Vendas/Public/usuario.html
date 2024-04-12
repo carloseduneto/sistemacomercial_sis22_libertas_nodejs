@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dev Sis Web</title>
+    <link rel="shortcut icon" href="https://icon-library.com/images/microsoft-office-365-icon/microsoft-office-365-icon-5.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <style>
+    .neg{
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<body >
+    <br>
+    <div class="container-md">
+        <div class="row">
+            <div class="col">
+                <h1><img src="https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" alt="" srcset="" height="50px">Cadastro de Usuário</h1>
+                
+            </div>
+            
+
+            <div class="col d-flex justify-content-end">
+  <button type="button" class="btn btn-outline-primary neg"  onclick="novo()">
+  <i class="bi bi-plus-circle"> </i> NOVO
+  </button>
+
+            </div>
+        </div>
+<br>
+        <div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">
+    Pesquisa:
+  </span>
+  <input type="text" class="form-control" id="txtpesquisa" aria-label="Username" aria-describedby="basic-addon1">
+  <button class="btn btn-outline-primary" onclick="listar()">
+  Pesquisar
+  </button>
+</div>
+
+
+<hr>
+<br>
+
+</div>
+
+    <table class="table table-hover">
+        <tr>
+            <th class="col">Id</th>
+            <th class="col">Nome</th>
+            <th class="col">Telefone</th>
+            <th class="col">E-mail</th>
+            <th class="col">Senha</th>
+            <th class="col"></th>
+        </tr>
+        <tbody id="lista">
+
+          <tr >
+              <td>1</td>
+              <td>Jéssica</td>
+              <td>(35) 9 9999-0000</td>
+              <td>jessica@email.com</td>
+              <td>******</td>
+              <td>
+                  <button class="btn btn-outline-success"><i class="bi bi-pencil"></i></button>
+                  <button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
+              </td>
+          </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalAlterar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- Inserir dados -->
+
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
+  </div>
+  <input type="textNome" class="form-control" placeholder="Nome" aria-label="Username" aria-describedby="basic-addon1" id="txtNome">
+</div>
+
+
+
+
+
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone-fill"></i></i></span>
+  </div>
+  <input type="tel" class="form-control" placeholder="(XX) X XXXX-XXXX" aria-label="Username" aria-describedby="basic-addon1" id="txtTelefone">
+</div>
+
+
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope-at-fill"></i></i></span>
+  </div>
+  <input type="email" class="form-control" placeholder="exemplo@email.com" aria-label="Username" aria-describedby="basic-addon1" id="txtEmail">
+</div>
+
+
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-key-fill"></i></span>
+  </div>
+  <input type="password" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" id="txtSenha">
+</div>
+
+
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-outline-primary" onclick="salvar()">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal Excluir -->
+<div class="modal fade" id="modalExcluir" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-trash3-fill"></i>&nbsp;&nbsp;Deletar para sempre cadastro</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+           Tem certeza que deseja excluir???
+           <br>
+           <h1>
+             <b>Pense bem!!!!</b>
+           </h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" onclick="excluirSim()">Sim</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Não</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+      <script src="index.js"></script>
+</body>
+</html>

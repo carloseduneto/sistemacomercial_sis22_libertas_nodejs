@@ -1,0 +1,17 @@
+{
+    "nome": "Carlos Eduardo",
+    "telefone": "35 9 99955-0011",
+    "e-mail": "nome@example.com.br",
+    "endereço": 
+    {
+        
+        "logradouro":"Rua Jequitibá",
+        "numero":"15",
+        "bairro":"Vila Sol",
+        "cidade":"Cidade da Lua",
+        "uf" : "WW",
+        "cep": "9999000"
+    },
+    "filmesFavoritos":["Amor Eterno", "Meu Amor", "Fim do Amor"]
+
+}
