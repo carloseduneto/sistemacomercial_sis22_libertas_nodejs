@@ -7,6 +7,27 @@ const modalTitle = document.getElementById("exampleModalLabel");
 
 
 
+function formatarData(data) {
+    // Converte a string de data para um objeto Date
+    var dataObjeto = new Date(data);
+
+    // Extrai dia, mês e ano
+    var dia = dataObjeto.getDate();
+    var mes = dataObjeto.getMonth() + 1; // Mês é base zero, então adicionamos 1
+    var ano = dataObjeto.getFullYear();
+
+    // Formata os valores para dois dígitos, se necessário
+    if (dia < 10) {
+        dia = '0' + dia;
+    }
+    if (mes < 10) {
+        mes = '0' + mes;
+    }
+
+    // Retorna a data formatada no formato dd/mm/aaaa
+    return dia + '/' + mes + '/' + ano;
+}
+
 
 function novo() {
     idatual = -1;
@@ -17,7 +38,8 @@ function novo() {
     const txtComissao = document.getElementById("txtComissao");
     const txtIdcliente = document.getElementById("txtIdcliente");
     const txtIdproduto = document.getElementById("txtIdproduto");
-    modalTitle.innerHTML = '<i class="bi bi-person-fill-add"></i>&nbsp;&nbsp;Cadastrar nova venda'
+    const txtIdvendedor = document.getElementById("txtIdvendedor");
+    modalTitle.innerHTML = '<i class="bi bi-receipt"></i>&nbsp;&nbsp;Cadastrar nova venda'
 
     
     
@@ -29,6 +51,7 @@ function novo() {
     txtComissao.value = "";
     txtIdcliente.value = "";
     txtIdproduto.value = "";
+    txtIdvendedor.value = "";
     
     modal.show();
 }
@@ -44,16 +67,18 @@ function alterar(id) {
             const txtQuantidade = document.getElementById("txtQuantidade");
             const txtValor = document.getElementById("txtValor");
             const txtComissao = document.getElementById("txtComissao");
-            const txtIdcliente = document.getElementById("txtNumeronf");
-            const txtIdproduto = document.getElementById("txtNumeronf");
+            const txtIdcliente = document.getElementById("txtIdcliente");
+            const txtIdproduto = document.getElementById("txtIdproduto");
+            const txtIdvendedor = document.getElementById("txtIdvendedor");
            
             txtNumeronf.value = dados.numeronf;
-            txtData.value = dados.data;
+            txtData.value = formatarData(dados.data);
             txtQuantidade.value = dados.quantidade;
             txtValor.value = dados.valor;
             txtComissao.value = dados.comissao;
             txtIdcliente.value = dados.idcliente;
             txtIdproduto.value = dados.idproduto;
+            txtIdvendedor.value = dados.idvendedor;
 
             //mostra a dialog para alterar
             modalTitle.innerHTML = '<i class="bi bi-pencil-fill"></i>&nbsp;&nbsp;Editar venda'
@@ -74,7 +99,6 @@ function listar() {
 }
 
 function mostrar(dados) {
-    console.log(dados)
     const lista = document.getElementById("lista");
     //limpa lista
     lista.innerHTML = "";
@@ -83,27 +107,18 @@ function mostrar(dados) {
     //***********para vendas******** 
     for (var i in dados) {
         let id = dados[i].idvenda;
-        console.log(dados[i])
-        /*lista.innerHTML +="<tr >"+
-              '<td>'+dados[i].idvenda+'</td>'+
-              '<td>'+dados[i].numeronf+'</td>'
-              '<td>'+dados[i].data+'</td>'
-              '<td>'+dados[i].quantidade+'</td>'
-              '<td>'+dados[i].valor+'</td>'
-              '<td>'+dados[i].idcliente+'</td>'
-              '<td>'+dados[i].idproduto+'</td>'
-              '<td>'
-                  '<button class="btn btn-outline-success"><i class="bi bi-pencil"></i></button>'
-                  '<button class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>'
-             " </td>"
-          "</tr>"*/
 
 
         lista.innerHTML += "<tr>"
-            + "<td>" + dados[i].idusuario + "</td>"
-            + "<td>" + dados[i].nome + "</td>"
-            + "<td>" + dados[i].telefone + "</td>"
-            + "<td>" + dados[i].email + "</td>"
+            + "<td>" + dados[i].idvenda + "</td>"
+            + "<td>" + dados[i].numeronf + "</td>"
+            + "<td>" + formatarData(dados[i].data) + "</td>"
+            + "<td>" + dados[i].quantidade + "</td>"
+            + "<td>" + dados[i].valor + "</td>"
+            + "<td>" + dados[i].comissao + "</td>"
+            + "<td>" + dados[i].idcliente + "</td>"
+            + "<td>" + dados[i].idproduto + "</td>"
+            + "<td>" + dados[i].idvendedor + "</td>"
             + '<td>' 
             +'<button class="btn btn-outline-success" onclick="alterar('+id+')"> <i class="bi bi-pencil"></i></button > '
             + '<button class="btn btn-outline-danger" onclick="excluir('+id+')"><i class="bi bi-trash"></i></button>'
@@ -118,7 +133,7 @@ function excluir(id) {
 }
 
 function excluirSim() {
-        fetch( "http://127.0.0.1:3333/usuario/" + idatual,
+        fetch( "http://127.0.0.1:3333/venda/" + idatual,
             {
                 headers: {
                     "Accept": "application/json",
@@ -136,29 +151,39 @@ function excluirSim() {
 }
 
 function salvar() {
-    const txtNome = document.getElementById("txtNome");
-    const txtTelefone = document.getElementById("txtTelefone");
-    const txtEmail = document.getElementById("txtEmail");
-    const txtSenha = document.getElementById("txtSenha");
+    const txtNumeronf = document.getElementById("txtNumeronf");
+    const txtData = document.getElementById("txtData");
+    const txtQuantidade = document.getElementById("txtQuantidade");
+    const txtValor = document.getElementById("txtValor");
+    const txtComissao = document.getElementById("txtComissao");
+    const txtIdcliente = document.getElementById("txtIdcliente");
+    const txtIdproduto = document.getElementById("txtIdproduto");
+    const txtIdvendedor = document.getElementById("txtIdvendedor");
 
     const dados = {
-        nome: txtNome.value,
-        telefone: txtTelefone.value,
-        email: txtEmail.value,
-        senha: txtSenha.value
+        numeronf: txtNumeronf.value,
+        data: (txtData.value),
+        quantidade: parseInt(txtQuantidade.value),
+        valor: parseFloat(txtValor.value),
+        comissao: parseFloat(txtComissao.value),
+        idcliente: parseInt(txtIdcliente.value),
+        idproduto: parseInt(txtIdproduto.value),
+        idvendedor: parseInt(txtIdvendedor.value),
     }
+
     var url;
     var metodo;
     if (idatual < 0) {
         //inserir
-        url = "http://127.0.0.1:3333/usuario";
+        url = "http://127.0.0.1:3333/venda";
         metodo = "POST";
     } else {
         //alterar
-        url = "http://127.0.0.1:3333/usuario/" + idatual;
+        url = "http://127.0.0.1:3333/venda/" + idatual;
         metodo = "PUT"
     }
 
+    console.log(dados)
         fetch(url,
             {
                 headers: {

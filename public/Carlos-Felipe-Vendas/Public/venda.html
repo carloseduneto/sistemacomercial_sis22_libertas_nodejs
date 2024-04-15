@@ -18,7 +18,7 @@
     <div class="container-md">
         <div class="row">
             <div class="col">
-                <h1><img src="https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg" alt="" srcset="" height="50px">Cadastro de Usuário</h1>
+                <h1><img src="https://static.vecteezy.com/system/resources/thumbnails/007/211/472/small/receipt-illustration-on-a-background-premium-quality-symbols-icons-for-concept-and-graphic-design-vector.jpg" alt="" srcset="" height="35px" style="margin: 10px;">Registrar venda</h1>
                 
             </div>
             
@@ -55,8 +55,9 @@
             <th class="col">Quantidade</th>
             <th class="col">Valor</th>
             <th class="col">Comissão</th>
-            <th class="col">Id Cliente</th>
             <th class="col">Id Produto</th>
+            <th class="col">Id Cliente</th>
+            <th class="col">Id Vendedor</th>
             <th class="col"></th>
         </tr>
         <tbody id="lista">
@@ -98,36 +99,110 @@
 
         <div class="input-group mb-3">
   <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-receipt-cutoff"></i></span>
+  </div>
+  <input type="text" class="form-control" placeholder="Número NF" aria-label="Username" aria-describedby="basic-addon1" id="txtNumeronf">
+</div>
+
+
+
+
+
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-calendar3"></i></span>
+  </div>
+  <input type="date" class="form-control" placeholder="Data" aria-label="Username" aria-describedby="basic-addon1" id="txtData">
+</div>
+
+
+
+
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-123"></i></span>
+  </div>
+  <input type="number" class="form-control" placeholder="Quantidade" aria-label="Username" aria-describedby="basic-addon1" id="txtQuantidade">
+</div>
+
+
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-cash-coin"></i></i></span>
+  </div>
+
+  <input type="number" class="form-control" placeholder="Valor" aria-label="Username" aria-describedby="basic-addon1" id="txtValor">
+</div>
+        <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-plus-fill"></i></span>
+  </div>
+  <input type="number" class="form-control" placeholder="Comissão" aria-label="Username" aria-describedby="basic-addon1" id="txtComissao">
+</div>
+
+
+        <!-- <div class="input-group mb-3">
+  <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
-  </div>
-  <input type="textNome" class="form-control" placeholder="Nome" aria-label="Username" aria-describedby="basic-addon1" id="txtNome">
+  </div> -->
+
+  <!-- <input type="text" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" id="txtIdcliente">
 </div>
-
-
-
-
-
         <div class="input-group mb-3">
   <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"><i class="bi bi-telephone-fill"></i></i></span>
+    <span class="input-group-text" id="basic-addon1"></span>
   </div>
-  <input type="tel" class="form-control" placeholder="(XX) X XXXX-XXXX" aria-label="Username" aria-describedby="basic-addon1" id="txtTelefone">
+  <input type="text" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" id="txtIdproduto">
+</div> -->
+
+
+ 
+
+  <!-- <input type="text" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" id="txtIdvendedor">
 </div>
-
-
-        <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span class="input-group-text" id="basic-addon1"><i class="bi bi-envelope-at-fill"></i></i></span>
-  </div>
-  <input type="email" class="form-control" placeholder="exemplo@email.com" aria-label="Username" aria-describedby="basic-addon1" id="txtEmail">
-</div>
-
-
         <div class="input-group mb-3">
   <div class="input-group-prepend">
     <span class="input-group-text" id="basic-addon1"><i class="bi bi-key-fill"></i></span>
+  </div> -->
+  <!-- <input type="text" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" id="txtQuantidade"> -->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><i class="bi bi-box"></i></span>
+    </div>
+  <select class="form-select" id="txtIdproduto">
+    <option value="" disabled selected>Id produto</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
   </div>
-  <input type="password" class="form-control" placeholder="Senha" aria-label="Username" aria-describedby="basic-addon1" id="txtSenha">
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-fill"></i></span>
+    </div>
+  <select class="form-select" id="txtIdcliente">
+    <option value="" disabled selected>Id cliente</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
+
+  </div>
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="basic-addon1"><i class="bi bi-person-vcard"></i></span>
+    </div>
+  <select class="form-select" id="txtIdvendedor">
+    <option value="" disabled selected>Id vendedor</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+  </select>
 </div>
 
 
